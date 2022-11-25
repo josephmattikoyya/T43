@@ -1,0 +1,137 @@
+body {
+    background-color: #D6CCA9;
+    font-family: 'Courier New', Courier, monospace;
+    color: #464237;
+    margin: 25px;
+}
+
+body.dark-theme {
+    background-color: #464237;
+    color: #D6CCA9;
+}
+
+section {
+    display: grid;
+    place-items: center;
+    align-content: center;
+    min-height: 50vh;
+}
+
+.hidden {
+    opacity: 0;
+    filter: blur(5px);
+    transition: all 2s;
+    transform: translate3d(100%);
+}
+
+.show {
+    opacity: 1;
+    filter: blur(0);
+    transform: translate3d(0);
+}
+
+@media(prefers-reduced-motion) {
+    .hidden {
+        transition: none;
+    }
+}
+
+h1 {
+    text-align: center;
+    text-decoration-line: underline;
+}
+
+a {
+    color:#374642
+}
+
+a:visited {
+    color: #463742;
+}
+
+.dark-theme a {
+    color: bisque;
+}
+
+.dark-theme a:visited {
+    color: #C3BDC1;
+}
+
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+
+label {
+    width: 100px;
+    height: 40px;
+    position: relative;
+    display: block;
+    background: #D6CCA9;
+    border-radius: 40px;
+    box-shadow: inset 0px 5px 15px #464237, inset 0px -5px 15px #D6CCA9;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+label:after {
+    content: '';
+    width: 36px;
+    height: 36px;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    background: linear-gradient(180deg, #374642, #464237);
+    border-radius: 36px;
+    box-shadow: 0px 5px 10px #464237;
+    transition: 0.3s;
+}
+
+input {
+    width: 0;
+    height: 0;
+    visibility: hidden;
+}
+
+input:checked + label {
+    background: #464237;
+}
+
+input:checked + label:after {
+    left:98px;
+    transform: translateX(-100%);
+    background: linear-gradient(180deg, #464237, #374642);
+}
+
+label:active:after {
+    width: 52px;
+}
+
+label svg {
+    position: absolute;
+    width: 24px;
+    top: 8px;
+    z-index: 100;
+}
+
+label svg.sun {
+    left: 8px;
+    fill: #D6CCA9;
+    transition: 0.3s;
+}
+
+label svg.moon {
+    left: 68px;
+    fill: #464237;
+    transition: 0.3s;
+}
+
+input:checked + label svg.sun {
+    fill: #7e7e7e;
+}
+input:checked + label svg.moon {
+    fill: #D6CCA9;
+}
